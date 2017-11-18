@@ -17,10 +17,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button rollBtn = (Button) findViewById(R.id.rollBtn);
-        ImageView dice1 = (ImageView) findViewById(R.id.dice_left);
-        ImageView dice2 = (ImageView) findViewById(R.id.dice_right);
+        final ImageView leftDice = (ImageView) findViewById(R.id.dice_left);
+        final ImageView rightDice = (ImageView) findViewById(R.id.dice_right);
 
-        int[] diceArr = {
+        final int[] diceArr = {
                 R.drawable.dice1,
                 R.drawable.dice2,
                 R.drawable.dice3,
@@ -37,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
                 Random randomNumberGenerator = new Random();
 
                 int number = randomNumberGenerator.nextInt(6);
+
+                leftDice.setImageResource(diceArr[number]);
+
+                number = randomNumberGenerator.nextInt(6);
+
+                rightDice.setImageResource(diceArr[number]);
 
 
             }
