@@ -2,5 +2,6 @@
     <string name="app_name">Magic Eight Ball</string>
     <string name="header_title">AVOIDNT</string>
     <string name="sub_header">Avoid Decisions, Avoid Life</string>
-    <string name="description">Life is hard we can make it easier for you</string>
+    <string name="description">Life is hard we can make it easier for you. Use this only for major life decisions.</string>
+    <string name="askBtn">ASK</string>
 </resources>

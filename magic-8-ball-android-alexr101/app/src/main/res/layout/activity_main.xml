@@ -47,7 +47,7 @@
         android:textAlignment="center">
 
         <TextView
-            android:id="@+id/sub_header"
+            android:id="@+id/subHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sub_header"
@@ -106,7 +106,7 @@
             android:layout_centerHorizontal="true"
             android:width="150dp"
             android:background="@android:color/holo_purple"
-            android:text="Button"
+            android:text="@string/askBtn"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
     </RelativeLayout>
