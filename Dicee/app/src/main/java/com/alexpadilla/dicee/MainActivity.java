@@ -2,6 +2,8 @@ package com.alexpadilla.dicee;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -12,9 +14,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button = (Button) findViewById(R.id.rollBtn);
+        Button rollBtn = (Button) findViewById(R.id.rollBtn);
         ImageView dice1 = (ImageView) findViewById(R.id.dice_left);
         ImageView dice2 = (ImageView) findViewById(R.id.dice_right);
+
+        rollBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Dicee", "The button was pressed")
+            }
+        });
 
     }
 }
