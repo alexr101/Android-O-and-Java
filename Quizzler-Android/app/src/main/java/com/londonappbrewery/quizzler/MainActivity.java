@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -18,6 +19,7 @@ public class MainActivity extends Activity {
     // TODO: Uncomment to create question bank
     private Button mTrueBtn;
     private Button mFalseBtn;
+    private TextView mQuestionTextView;
 
     private Question[] mQuestionBank = new Question[] {
             new Question(R.string.question_1, true),
@@ -42,8 +44,10 @@ public class MainActivity extends Activity {
 
         mTrueBtn = (Button) findViewById(R.id.true_button);
         mFalseBtn = (Button) findViewById(R.id.false_button);
+        mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
+        mQuestionTextView.setText("Dinosaurs are so roar");
 
-        View.OnClickListener myListener = new View.OnClickListener() {
+        View.OnClickListener btnListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String msg = v.getTag().toString() + " button was pressed";
@@ -52,6 +56,8 @@ public class MainActivity extends Activity {
             }
         };
 
+        mTrueBtn.setOnClickListener(btnListener);
+        mFalseBtn.setOnClickListener(btnListener);
 
 
     }
