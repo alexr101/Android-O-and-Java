@@ -65,9 +65,19 @@ public class MainActivity extends Activity {
     }
 
     private void updateQuestion() {
-        mIndex++;
+        mIndex = (mIndex+1) % mQuestionBank.length;
         mQuestion = mQuestionBank[mIndex].getId();
         mQuestionTextView.setText(mQuestion);
+    }
+
+    private void checkAnswer(Boolean userAnswer) {
+        Boolean answer = mQuestionBank[mIndex].getAnswer();
+
+        if(userAnswer == answer) {
+            Toast.makeText(getApplicationContext(), R.string.correct_toast, Toast.LENGTH_SHORT);
+        } else {
+            Toast.makeText(getApplicationContext(), R.string.incorrect_toast, Toast.LENGTH_SHORT);
+        }
     }
 
 }
