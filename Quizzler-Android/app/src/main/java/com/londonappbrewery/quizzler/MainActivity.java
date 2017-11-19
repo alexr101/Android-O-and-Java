@@ -49,15 +49,12 @@ public class MainActivity extends Activity {
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
         mQuestion = mQuestionBank[mIndex].getId();
-
         mQuestionTextView.setText(mQuestion);
 
         View.OnClickListener btnListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String msg = v.getTag().toString() + " button was pressed";
-                Toast btnToast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
-                btnToast.show();
+                updateQuestion();
             }
         };
 
@@ -67,6 +64,10 @@ public class MainActivity extends Activity {
 
     }
 
-    Question q1 = new Question(R.string.question_1, true);
+    private void updateQuestion() {
+        mIndex++;
+        mQuestion = mQuestionBank[mIndex].getId();
+        mQuestionTextView.setText(mQuestion);
+    }
 
 }
