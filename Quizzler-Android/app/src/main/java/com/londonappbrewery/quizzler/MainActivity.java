@@ -2,6 +2,8 @@ package com.londonappbrewery.quizzler;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
@@ -15,7 +17,7 @@ public class MainActivity extends Activity {
     // TODO: Uncomment to create question bank
     private Button mTrueBtn;
     private Button mFalseBtn;
-    
+
 //    private TrueFalse[] mQuestionBank = new TrueFalse[] {
 //            new TrueFalse(R.string.question_1, true),
 //            new TrueFalse(R.string.question_2, true),
@@ -40,9 +42,16 @@ public class MainActivity extends Activity {
         mTrueBtn = (Button) findViewById(R.id.true_button);
         mFalseBtn = (Button) findViewById(R.id.false_button);
 
+        View.OnClickListener myListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("warning", "button pressed");
+            }
+        };
 
-
-
+        mTrueBtn.setOnClickListener( myListener );
+        mFalseBtn.setOnClickListener( myListener );
 
     }
+
 }
