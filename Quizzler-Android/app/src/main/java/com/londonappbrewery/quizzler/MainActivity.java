@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -45,7 +46,9 @@ public class MainActivity extends Activity {
         View.OnClickListener myListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("warning", "button pressed");
+                String msg = v.getTag().toString() + " button was pressed";
+                Toast btnToast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+                btnToast.show();
             }
         };
 
