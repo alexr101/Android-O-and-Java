@@ -13,20 +13,14 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends Activity {
 
-    // TODO: Declare constants here
-    private final int PROGRESS_BAR_INCREMENT = 8;
-
-    // TODO: Declare member variables here:
-
-
-    // TODO: Uncomment to create question bank
     private Button mTrueBtn;
     private Button mFalseBtn;
     private TextView mQuestionTextView;
-    private int mIndex;
-    private int mQuestion;
     private ProgressBar mProgressBar;
     private TextView mScoreTextView;
+    private int mIndex;
+    private int mQuestion;
+    private int mScore = 0;
 
     private Question[] mQuestionBank = new Question[] {
             new Question(R.string.question_1, true),
@@ -44,6 +38,8 @@ public class MainActivity extends Activity {
             new Question(R.string.question_13,true)
     };
 
+    private final int PROGRESS_BAR_INCREMENT = (int) Math.ceil(100.0 / mQuestionBank.length);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +48,8 @@ public class MainActivity extends Activity {
         mTrueBtn = (Button) findViewById(R.id.true_button);
         mFalseBtn = (Button) findViewById(R.id.false_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
-
+        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        mScoreTextView = (TextView) findViewById(R.id.score);
         mQuestion = mQuestionBank[mIndex].getId();
         mQuestionTextView.setText(mQuestion);
 
@@ -77,6 +74,7 @@ public class MainActivity extends Activity {
         mQuestion = mQuestionBank[mIndex].getId();
         mQuestionTextView.setText(mQuestion);
         mProgressBar.incrementProgressBy(PROGRESS_BAR_INCREMENT);
+        mScoreTextView.setText("Score " + mScore + "/" + mQuestionBank.length);
     }
 
     private void checkAnswer(boolean userAnswer) {
@@ -84,6 +82,7 @@ public class MainActivity extends Activity {
 
         if(userAnswer == answer) {
             Toast.makeText(getApplicationContext(), R.string.correct_toast, Toast.LENGTH_SHORT).show();
+            mScore++;
         } else {
             Toast.makeText(getApplicationContext(), R.string.incorrect_toast, Toast.LENGTH_SHORT).show();
         }
