@@ -20,6 +20,8 @@ public class MainActivity extends Activity {
     private Button mTrueBtn;
     private Button mFalseBtn;
     private TextView mQuestionTextView;
+    private int mIndex;
+    private int mQuestion;
 
     private Question[] mQuestionBank = new Question[] {
             new Question(R.string.question_1, true),
@@ -45,7 +47,10 @@ public class MainActivity extends Activity {
         mTrueBtn = (Button) findViewById(R.id.true_button);
         mFalseBtn = (Button) findViewById(R.id.false_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
-        mQuestionTextView.setText("Dinosaurs are so roar");
+
+        mQuestion = mQuestionBank[mIndex].getId();
+
+        mQuestionTextView.setText(mQuestion);
 
         View.OnClickListener btnListener = new View.OnClickListener() {
             @Override
