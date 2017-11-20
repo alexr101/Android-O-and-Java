@@ -5,5 +5,5 @@ package com.londonappbrewery.destini;
  */
 
 public class QuestionBank {
-
+    public String story1 =
 }
