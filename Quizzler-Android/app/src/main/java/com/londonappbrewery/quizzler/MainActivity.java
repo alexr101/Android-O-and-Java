@@ -1,6 +1,8 @@
 package com.londonappbrewery.quizzler;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,6 +47,14 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(savedInstanceState != null) {
+            mScore = savedInstanceState.getInt("score");
+            mIndex = savedInstanceState.getInt("questionIndex");
+        } else {
+            mScore = 0;
+            mIndex = 0;
+        }
+
         mTrueBtn = (Button) findViewById(R.id.true_button);
         mFalseBtn = (Button) findViewById(R.id.false_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
@@ -52,6 +62,8 @@ public class MainActivity extends Activity {
         mScoreTextView = (TextView) findViewById(R.id.score);
         mQuestion = mQuestionBank[mIndex].getId();
         mQuestionTextView.setText(mQuestion);
+
+        updateScore();
 
         View.OnClickListener btnListener = new View.OnClickListener() {
             @Override
@@ -69,12 +81,31 @@ public class MainActivity extends Activity {
 
     }
 
+    private void updateScore() {
+        mScoreTextView.setText("Score " + mScore + "/" + mQuestionBank.length);
+    }
+
     private void updateQuestion() {
         mIndex = (mIndex+1) % mQuestionBank.length;
+
+        if(mIndex == 0) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Game Over");
+            alert.setCancelable(false);
+            alert.setMessage("You finished the game with " + mScore + " points");
+            alert.setPositiveButton("Close Application", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            alert.show();
+        }
+
         mQuestion = mQuestionBank[mIndex].getId();
         mQuestionTextView.setText(mQuestion);
         mProgressBar.incrementProgressBy(PROGRESS_BAR_INCREMENT);
-        mScoreTextView.setText("Score " + mScore + "/" + mQuestionBank.length);
+        updateScore();
     }
 
     private void checkAnswer(boolean userAnswer) {
@@ -88,4 +119,11 @@ public class MainActivity extends Activity {
         }
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("score", mScore);
+        outState.putInt("questionIndex", mIndex);
+    }
 }
