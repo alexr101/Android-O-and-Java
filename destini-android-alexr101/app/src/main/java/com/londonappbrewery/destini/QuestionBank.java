@@ -40,7 +40,7 @@ public class QuestionBank {
 
         option2a.setNextStory(story3);
         option2b.setNextStory(story4);
-        
+
         option3a.setNextStory(story5);
         option3b.setNextStory(story6);
 
