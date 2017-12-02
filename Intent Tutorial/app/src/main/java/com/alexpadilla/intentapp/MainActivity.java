@@ -8,13 +8,12 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button intentBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        intentBtn = (Button) findViewById(R.id.intentBtn);
+        Button intentBtn = (Button) findViewById(R.id.intentBtn);
 
         intentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,9 +23,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-
-        // links to layout/actvity_main.xml
-        setContentView(R.layout.activity_main);
     }
 }
