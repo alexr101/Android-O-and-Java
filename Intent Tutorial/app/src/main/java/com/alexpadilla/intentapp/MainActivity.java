@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // noise
                 Intent i = new Intent(MainActivity.this, SecondViewActivity.class);
+                i.putExtra("value1","my extra param");
                 startActivity(i);
             }
         });

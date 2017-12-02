@@ -8,4 +8,11 @@
     tools:context="com.alexpadilla.intentapp.SecondViewActivity"
     tools:showIn="@layout/activity_second_view">
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteY="270dp" />
 </android.support.constraint.ConstraintLayout>
